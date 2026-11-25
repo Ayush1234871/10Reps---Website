@@ -1,0 +1,19 @@
+/* One brand accent, from wordmark to invitation. */
+.logo b,.pass .pt b{color:var(--button-lime)}
+.hero-ch h1{font-size:clamp(42px,4.6vw,70px);line-height:1.08}
+.ch .pts b{line-height:1.5}.ch .pts li>div{min-width:0}.ch .pts span{font-size:14px;line-height:1.65}
+/* Icons share a fixed optical box; none depend on font glyph baselines. */
+.site-icon{display:block;width:24px;height:24px;flex:none;fill:none;stroke:currentColor;stroke-width:1.65;stroke-linecap:round;stroke-linejoin:round}
+.pts em{display:grid;place-items:center;flex:none;line-height:1}.pts em .site-icon{width:19px;height:19px}
+.fc .ic{display:flex;align-items:center;min-height:30px}.fc .ic .site-icon{width:28px;height:28px}
+#lk svg,.store-badge svg{display:block;flex:none}.store-badge{align-items:center}
+.phone-notes{position:absolute;inset:0;z-index:12;pointer-events:none}
+.phone-note{position:absolute;width:142px;display:flex;align-items:flex-start;gap:10px;padding:13px 12px;border:1px solid #a6ff3f40;border-radius:16px;background:linear-gradient(135deg,#15231af5,#080e0bf5);box-shadow:0 12px 32px #0005,inset 0 1px 0 #d5ffab0c;animation:note-arrive .65s cubic-bezier(.22,1,.36,1) both}
+.phone-note:nth-child(1){left:0;top:25%;animation-delay:.05s}.phone-note:nth-child(2){right:2%;top:52%;animation-delay:.15s}.phone-note:nth-child(3){left:0;bottom:15%;animation-delay:.25s}
+.phone-note-icon{width:29px;height:29px;display:grid;place-items:center;flex:none;border-radius:9px;background:#b7ff0010;color:var(--button-lime);border:1px solid #b7ff0024}
+.phone-note-icon .site-icon{width:17px;height:17px}.phone-note-copy{min-width:0}.phone-note b{display:block;font-size:12px;line-height:1.45;font-weight:600;color:#eef3ee}.phone-note small{display:block;font-size:10px;line-height:1.6;color:#a0b39f;margin-top:4px}
+@keyframes note-arrive{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+@media(min-width:861px) and (max-width:1250px){.phone-note{width:128px;padding:10px;gap:7px}.phone-note:nth-child(1){left:0;top:23%}.phone-note:nth-child(2){right:0;top:52%}.phone-note:nth-child(3){left:0;bottom:13%}.phone-note b{font-size:11px}.phone-note small{font-size:9px}.phone-note-icon{width:24px;height:24px}}
+@media(max-width:860px){.hero-ch h1{font-size:42px}.phone-note{width:99px;padding:9px 7px;gap:6px;border-radius:12px}.phone-note:nth-child(1){left:2%;top:17%}.phone-note:nth-child(2){right:2%;top:57%}.phone-note:nth-child(3){display:none}.phone-note small{display:none}.phone-note b{font-size:10px;line-height:1.5}.phone-note-icon{width:21px;height:21px;border-radius:7px}.phone-note-icon .site-icon{width:13px;height:13px}.ch .pts span{font-size:13px}.ch .pts b{font-size:14px}.stage{isolation:isolate}}
+@media(max-width:360px){.phone-note{width:82px;gap:4px;padding:8px 5px}.phone-note b{font-size:9px}.phone-note-icon{width:18px;height:18px}.phone-note:nth-child(1){left:1%}.phone-note:nth-child(2){right:1%}}
+@media(prefers-reduced-motion:reduce){.phone-note{animation:none}}

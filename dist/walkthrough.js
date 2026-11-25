@@ -1,6 +1,20 @@
 // Composed app scenes. No simulated screen recording, nested screens or auto-scroll.
 const appPaths={home:'M3 10 12 3l9 7v10a1 1 0 0 1-1 1h-5v-7H9v7H4a1 1 0 0 1-1-1Z',workout:'M3 8v8m4-11v14m10-14v14m4-11v8M7 12h10',community:'M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2m20 0v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75M13 7a4 4 0 1 1-8 0 4 4 0 0 1 8 0Z',profile:'M20 21v-2a7 7 0 0 0-14 0v2M17 7a4 4 0 1 1-8 0 4 4 0 0 1 8 0Z',check:'m5 12 4 4L19 6',spark:'m12 2 2.7 7.3L22 12l-7.3 2.7L12 22l-2.7-7.3L2 12l7.3-2.7Z',play:'m9 5 10 7-10 7Z',calendar:'M4 5h16v16H4ZM8 2v6m8-6v6M4 11h16',heart:'M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1.1-1.1a5.5 5.5 0 0 0-7.8 7.8L12 21l8.8-8.6a5.5 5.5 0 0 0 0-7.8Z',chevron:'m9 5 7 7-7 7',bell:'M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9m-12 12h0m3 0h6',chart:'M3 3v18h18M6 15l4-5 4 2 6-7',trophy:'M8 3h8v7a4 4 0 0 1-8 0ZM8 5H4v3a4 4 0 0 0 4 4m8-7h4v3a4 4 0 0 1-4 4m-4 2v6m-4 1h8',moon:'M20 15.5A9 9 0 0 1 8.5 4 9 9 0 1 0 20 15.5Z'};
 const appIcon=(name,cls='')=>`<svg class="${cls}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="${appPaths[name]||appPaths.spark}"/></svg>`;
+appPaths.gym='M3 8v8m4-11v14m10-14v14m4-11v8M7 12h10';
+appPaths.location='M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 1 1 16 0ZM15 10a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z';
+appPaths.history='M3 11a9 9 0 1 1 2.6 7.4M3 4v7h7m2-4v6l4 2';
+const benefitIcons=['location','spark','check','calendar','chart','community'];
+document.querySelectorAll('.pts em').forEach((e,i)=>{e.innerHTML=appIcon(benefitIcons[i],'site-icon');e.setAttribute('aria-hidden','true')});
+document.querySelectorAll('.fc .ic').forEach((e,i)=>{e.innerHTML=appIcon(['location','spark','community','chart','moon','trophy'][i],'site-icon');e.setAttribute('aria-hidden','true')});
+const phoneNotes=document.createElement('div');phoneNotes.className='phone-notes';phoneNotes.setAttribute('aria-label','Training benefits');document.querySelector('.stage').append(phoneNotes);
+const chapterNotes=[
+ [['spark','Know your next move','RepStart AI, close at hand.'],['community','Keep going, together','Your squad is in your corner.'],['gym','One connected routine','Plan. Train. Look back.']],
+ [['location','Your gym. Your plan.','Built for your equipment.'],['spark','Guidance, in reach','Find a cue. Choose a movement.'],['check','Less deciding','A clear session to follow.']],
+ [['calendar','Life happens. Adjust.','Move a session. Keep your routine.'],['chart','See the small wins','Your history tells a fuller story.'],['community','Your squad, beside you','Share the return, too.']]
+];
+let noteChapter=-1;
+function syncPhoneNotes(chapter){if(noteChapter===chapter)return;noteChapter=chapter;phoneNotes.innerHTML=chapterNotes[chapter].map(([icon,title,copy])=>`<div class="phone-note"><span class="phone-note-icon">${appIcon(icon,'site-icon')}</span><div class="phone-note-copy"><b>${title}</b><small>${copy}</small></div></div>`).join('')}
 const appTabs=['Home','Workout','Community','Profile'];
 const appNav=document.querySelector('.device-nav');
 appNav.innerHTML=appTabs.map((name,i)=>`<button type="button" data-app-tab="${i}" aria-label="Preview ${name} tab">${appIcon(['home','workout','community','profile'][i])}<small>${name}</small></button>`).join('');
@@ -17,7 +31,7 @@ const pButton=(text,icon='play')=>`<div class="p-cta">${appIcon(icon)}<span>${te
 const pSection=(title,more='')=>`<div class="p-section-label"><b>${title}</b><span>${more}</span></div>`;
 const homeScene=()=>appHeading('LET’S MAKE IT COUNT','Good morning, Aman',appAvatar('A'))+
  '<div class="p-training-hero"><div class="p-training-photo"></div><div class="p-photo-shade"></div><span class="p-floating-tag">YOUR PLAN · READY FOR YOU</span><div class="p-training-copy"><span>STRENGTH · UPPER BODY</span><h4>Today is<br>your day.</h4><div class="p-hero-meta"><span>45 min</span><i></i><span>Gym session</span></div></div><div class="p-play-orb">'+appIcon('play')+'</div></div>'+
- pCoach('Your next move, made clearer.','Your session is ready. Let’s start strong.')+
+ pCoach('Your next move, made clearer.','Open your plan. Take it one set at a time.')+
  '<div class="p-week-block">'+pSection('A little momentum.','Your week')+appWeek+'</div>'+
  '<div class="p-home-bottom"><div class="p-mini-card">'+appIcon('chart')+'<span>YOUR JOURNEY</span><b>See your progress</b></div><div class="p-mini-card">'+appIcon('community')+'<span>YOUR PEOPLE</span><b>Check in with your squad</b></div></div>';
 const workoutScene=()=>appHeading('YOUR WORKOUT','A plan with purpose.',`<span class="p-round-icon">${appIcon('calendar')}</span>`)+
@@ -28,7 +42,7 @@ const workoutScene=()=>appHeading('YOUR WORKOUT','A plan with purpose.',`<span c
 const communityScene=()=>appHeading('COMMUNITY','Better, together.',`<span class="p-round-icon">${appIcon('bell')}</span>`)+
  '<div class="p-squad-strip"><div class="p-squad-avatars">'+appAvatar('N')+appAvatar('R')+appAvatar('A')+'<span>+</span></div><div><b>My Squad</b><small>Your people. Your corner.</small></div>'+appIcon('chevron')+'</div>'+
  '<div class="p-snap-card"><div class="p-snap-header">'+appAvatar('R')+'<div><b>Riya’s training moment</b><small>Squad Snaps · Preview</small></div><span>•••</span></div><div class="p-snap-image"><div class="p-snap-caption"><span>ONE SESSION AT A TIME.</span><b>Showing up<br>looks good on you.</b></div><span class="p-snap-stamp">10reps</span></div><div class="p-snap-actions">'+appIcon('heart')+'<span>A little encouragement goes a long way.</span><b>Cheer</b></div></div>'+
- '<div class="p-challenge">'+appIcon('community')+'<div><span>10 TOGETHER</span><b>A shared goal. A stronger crew.</b></div>'+appIcon('chevron')+'</div>';
+ '<div class="p-challenge">'+appIcon('community')+'<div><span>10 TOGETHER</span><b>A shared goal. A reason to return.</b></div>'+appIcon('chevron')+'</div>';
 const profileScene=()=>appHeading('PROFILE','Your effort, in focus.',`<span class="p-round-icon">${appIcon('profile')}</span>`)+
  '<div class="p-profile-top">'+appAvatar('A')+'<div><h4>Aman</h4><p>Building strength. Finding a rhythm.</p><span class="p-member-tag">10REPS FOUNDING CREW</span></div></div>'+
  '<div class="p-progress-panel"><div>'+pSection('Your training story','Sample view')+'<div class="p-chart-title"><b>Stronger, at your pace.</b><span>WORKOUT HISTORY</span></div><svg class="p-line-chart" viewBox="0 0 260 90"><defs><linearGradient id="chart-fill" x2="0" y2="1"><stop stop-color="#b7f87c" stop-opacity=".3"/><stop offset="1" stop-color="#b7f87c" stop-opacity="0"/></linearGradient></defs><path class="p-chart-area" d="M4 73 38 58 73 64 109 39 146 46 182 28 218 34 256 9V90H4Z" fill="url(#chart-fill)"/><path class="p-chart-line" d="M4 73 38 58 73 64 109 39 146 46 182 28 218 34 256 9" fill="none" stroke="#b7f87c" stroke-width="3" stroke-linecap="round"/><circle class="p-chart-dot" cx="256" cy="9" r="4" fill="#d6ffac"/></svg><div class="p-chart-labels"><span>Your first session</span><span>Your next chapter</span></div></div></div>'+
@@ -44,13 +58,14 @@ const executionScene=()=>appHeading('WORKOUT IN FOCUS','Move with intention.',`<
  '<div class="p-cue-list"><div>'+appIcon('check')+'<span>Set your position.</span></div><div>'+appIcon('check')+'<span>Move with control.</span></div><div>'+appIcon('check')+'<span>Choose your own pace.</span></div></div>'+
  pCoach('RepStart AI, close at hand.','Exercise cues. Useful alternatives. Clear direction.')+pButton('Ready for your next set');
 const recoveryScene=()=>appHeading('A ROUTINE FOR REAL LIFE','Room to recover.',`<span class="p-round-icon">${appIcon('moon')}</span>`)+
- '<div class="p-recovery-hero"><div class="p-recovery-orbit"></div><span class="p-moon">'+appIcon('moon')+'</span><span>RECOVERY IS PART OF THE PLAN</span><h4>Pause today.<br>Come back stronger.</h4></div>'+
+ '<div class="p-recovery-hero"><div class="p-recovery-orbit"></div><span class="p-moon">'+appIcon('moon')+'</span><span>RECOVERY IS PART OF THE PLAN</span><h4>Rest today.<br>Pick up from here.</h4></div>'+
  '<div class="p-week-block">'+pSection('Your week, your way.','Flexible by design')+appWeek+'</div>'+
  '<div class="p-recovery-options"><div>'+appIcon('calendar')+'<span><b>Move your session</b><small>Keep the direction. Adjust the day.</small></span>'+appIcon('chevron')+'</div><div>'+appIcon('heart')+'<span><b>Make space for mobility</b><small>A little movement, at your pace.</small></span>'+appIcon('chevron')+'</div></div>'+pCoach('A missed day isn’t a lost journey.','Your next session is a fresh place to begin.');
 const scenes={home:{tab:0,build:homeScene,label:'Your day, ready to go'},workout:{tab:1,build:workoutScene,label:'A clear plan for your effort'},community:{tab:2,build:communityScene,label:'Your people, in your corner'},profile:{tab:3,build:profileScene,label:'See your effort take shape'},setup:{tab:1,build:setupScene,label:'Built for your gym, your equipment'},execution:{tab:1,build:executionScene,label:'Direction for your next set'},recovery:{tab:0,build:recoveryScene,label:'A routine with room for life'}};
 const appSequences=[['home','workout','community','profile'],['setup','execution'],['profile','recovery']];
 let activeAppChapter=0,activeAppPhase=0,appElapsed=0,appVisible=true,lastAppTick=performance.now();
 function showAppScene(key){
+ syncPhoneNotes(activeAppChapter);
  document.querySelectorAll('#screen video').forEach(video=>video.pause());
  const scene=scenes[key],host=S[activeAppChapter];
  host.classList.add('product-screen');host.innerHTML=`<div class="product-app"><div class="app-scene scene-${key}">${scene.build()}</div></div>`;
