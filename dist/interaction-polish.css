@@ -18,3 +18,12 @@
 #lk.unlocking svg{filter:drop-shadow(0 0 3px #ffffff44)}
 .faq details[open] p{animation:none}.faq details{overflow-anchor:none}.faq details[data-expanded="false"] summary::after{transform:none}.faq details[data-expanded="true"] summary::after{transform:rotate(45deg)}
 @media(prefers-reduced-motion:reduce){#lk .lock-shackle{transition:none}.pts li,.fc{transition:none}}
+.final>.btn{justify-content:center;text-align:center}
+/* Navigation uses the hero invitation button's visual treatment. */
+header nav a.cta2{background:var(--button-lime);color:#080c03;opacity:1;border:0;border-radius:18px;height:54px;padding:0 22px;font:800 15px/1 Sora,sans-serif;letter-spacing:-.025em;text-align:center;box-shadow:0 0 34px #b7ff002a;transition:transform .25s,box-shadow .25s}
+header nav a.cta2:hover{background:var(--button-lime);color:#080c03;box-shadow:0 0 42px #b7ff0040;transform:translateY(-2px)}
+/* Footer information actions read like the adjacent FAQ link. */
+.site-footer .footer-group button{display:block;min-height:0;padding:0;border:0;border-radius:0;background:transparent;color:var(--mu);font:400 13px/1.6 Sora,sans-serif;letter-spacing:normal;text-align:left;box-shadow:none}
+.site-footer .footer-group button:hover{background:transparent;color:var(--ac);box-shadow:none;transform:none}
+.site-footer .footer-group button::after{display:none}
+@media(max-width:860px){header nav a.cta2{height:46px;padding:0 15px;font-size:11px;border-radius:18px}}
