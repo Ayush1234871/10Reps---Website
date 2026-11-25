@@ -21,3 +21,27 @@ body,button,input,select,textarea,dialog,.product-app{font-family:var(--font-ui)
 @media(min-width:861px) and (max-width:1100px){.phone-note{width:222px;left:-12px;padding:13px}.phone-note:nth-child(2){width:240px;right:0}.phone-note:nth-child(3){width:262px;left:-12px}.phone-note-status b{font-size:12px}}
 @media(max-width:860px){.phone-note{width:207px;min-height:60px;padding:11px 13px;border-radius:17px}.phone-note:nth-child(1){left:1%;top:7%}.phone-note:nth-child(2){width:225px;right:1%;top:43%}.phone-note:nth-child(3){display:block;width:251px;left:2%;top:76%;bottom:auto}.phone-note-label{font-size:8px;letter-spacing:.14em;margin-bottom:4px}.phone-note-status{gap:7px}.phone-note-status b{font-size:11px}.note-status-dot{width:6px;height:6px}.note-equalizer{width:21px;height:14px;gap:2px}.note-equalizer i{width:2.5px}}
 @media(prefers-reduced-motion:reduce){.phone-note,.note-equalizer i{animation:none}.note-equalizer i:nth-child(odd){transform:scaleY(.5)}#lk .lock-shackle{transition:none}}
+/* Separate layout tracks guarantee that status cards never cover the device. */
+@media(min-width:1200px){
+ .stage{grid-template-columns:minmax(0,1fr) auto;column-gap:22px;padding-right:18px}
+ .stage>.phone{grid-column:2;grid-row:1;width:min(290px,calc((100svh - 118px)*.44));min-width:220px}
+ .stage>.phone-notes{position:static;inset:auto;grid-column:1;grid-row:1;display:flex;flex-direction:column;gap:48px;width:100%;min-width:0;align-self:center}
+ .stage>.device-caption{grid-column:2;grid-row:2}
+ .phone-notes .phone-note{position:relative;inset:auto;transform:none;width:100%;max-width:296px;min-height:76px;padding:14px 12px;align-self:end}
+ .phone-note-status b{white-space:normal}
+}
+@media(min-width:861px) and (max-width:1199px){
+ .stage{grid-template-columns:1fr;grid-template-rows:auto auto;align-content:center;gap:16px;padding:82px 16px 16px}
+ .stage>.phone{grid-column:1;grid-row:1;width:min(220px,calc((100svh - 330px)*.474));min-width:140px}
+ .stage>.phone-notes{position:static;inset:auto;grid-column:1;grid-row:2;display:flex;flex-direction:column;align-items:center;gap:10px;width:100%}
+ .phone-notes .phone-note{position:relative;inset:auto;transform:none;width:100%;max-width:296px;min-height:60px;padding:10px 14px}
+ .stage>.device-caption{display:none}.phone-note-status b{white-space:normal}
+}
+@media(max-width:860px){
+ .stage{height:610px;grid-template-columns:1fr;grid-template-rows:auto auto;align-content:start;gap:16px;padding:6px 16px 0}
+ .stage>.phone{grid-column:1;grid-row:1}
+ .stage>.phone-notes{position:static;inset:auto;grid-column:1;grid-row:2;display:flex;flex-direction:column;align-items:center;gap:10px;width:100%}
+ .phone-notes .phone-note{position:relative;inset:auto;transform:none;width:100%;max-width:296px;min-height:60px;padding:11px 14px}
+ .phone-note-status b{white-space:normal;font-size:12px}.phone-note-label{font-size:9px}
+ .story .ch,.story .hero-ch{padding-top:700px;background:linear-gradient(transparent 680px,#050706f5 700px,#050706)}
+}
