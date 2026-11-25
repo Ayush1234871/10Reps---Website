@@ -27,7 +27,7 @@ header{padding-block:12px}nav a.cta2{height:54px;border-radius:18px;padding-inli
 @media(max-width:860px){nav a.cta2{height:46px;padding-inline:15px;border-radius:16px;font-size:11px}.store-buttons{gap:8px}.store-badge{width:calc((min(342px,88vw) - 8px)/2);min-width:135px;max-width:166px;height:54px;padding-inline:9px}.store-badge span{font-size:12px}.store-badge small{font-size:7px}.store-badge svg{width:23px}.site-footer .footer-group button{font-size:12px;padding:9px 12px}}
 :is(.site-footer .footer-group button,.box .x,.info-close){position:relative;overflow:hidden;isolation:isolate}.box .x,.info-close{position:absolute}
 :is(.site-footer .footer-group button,.box .x,.info-close)::after{content:'';position:absolute;inset:-60% -50%;z-index:2;pointer-events:none;background:linear-gradient(112deg,transparent 40%,#ffffff1f 45%,#ffffffcc 49%,#ffffff3d 53%,transparent 59%);transform:translateX(-110%);mix-blend-mode:screen}
-@media(hover:hover){:is(.site-footer .footer-group button,.box .x,.info-close):hover::after{animation:button-glaze 1s cubic-bezier(.2,.65,.3,1) .06s both}}
+@media(hover:hover){:is(.site-footer .footer-group button,.box .x,.info-close):hover::after{animation:button-glaze 2.2s linear .1s both}}
 @media(prefers-reduced-motion:reduce){:is(.site-footer .footer-group button,.box .x,.info-close)::after{animation:none!important}}
 #modal .box .x,dialog#footer-info .info-close{position:absolute}
 .store-buttons{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));width:min(342px,100%)}.store-buttons .store-badge{width:100%;max-width:none;min-width:0}.final .store-buttons{margin-inline:auto}

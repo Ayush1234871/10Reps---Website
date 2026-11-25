@@ -22,6 +22,9 @@ body,button,input,select,textarea,dialog,.product-app{font-family:var(--font-ui)
 @media(max-width:860px){.phone-note{width:207px;min-height:60px;padding:11px 13px;border-radius:17px}.phone-note:nth-child(1){left:1%;top:7%}.phone-note:nth-child(2){width:225px;right:1%;top:43%}.phone-note:nth-child(3){display:block;width:251px;left:2%;top:76%;bottom:auto}.phone-note-label{font-size:8px;letter-spacing:.14em;margin-bottom:4px}.phone-note-status{gap:7px}.phone-note-status b{font-size:11px}.note-status-dot{width:6px;height:6px}.note-equalizer{width:21px;height:14px;gap:2px}.note-equalizer i{width:2.5px}}
 @media(prefers-reduced-motion:reduce){.phone-note,.note-equalizer i{animation:none}.note-equalizer i:nth-child(odd){transform:scaleY(.5)}#lk .lock-shackle{transition:none}}
 /* Separate layout tracks guarantee that status cards never cover the device. */
+/* Shared invitation typography avoids different nav and hero font overrides. */
+body :is(.btn,.footer-invite),header nav a.cta2,.gate #lk,.hero-ch .cta .btn,.final>.btn,.box .btn,#footer-info .btn{font-family:var(--font-ui);font-weight:800;font-size:15px;line-height:1.2;letter-spacing:-.025em}
+@media(max-width:860px){body :is(.btn,.footer-invite),header nav a.cta2,.gate #lk,.hero-ch .cta .btn,.final>.btn,.box .btn,#footer-info .btn{font-size:14px}header nav a.cta2{padding-inline:14px}}
 @media(min-width:1200px){
  .stage{grid-template-columns:minmax(0,1fr) auto;column-gap:22px;padding-right:18px}
  .stage>.phone{grid-column:2;grid-row:1;width:min(290px,calc((100svh - 118px)*.44));min-width:220px}
