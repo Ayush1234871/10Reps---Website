@@ -52,3 +52,7 @@ The current app-preview files are `dist/walkthrough.js`, `dist/product-preview.c
 The movement scene includes locally bundled stock video by Tima Miroshnichenko / Pexels: https://www.pexels.com/video/man-doing-work-out-5319753/ . This is illustrative movement footage, not a screen recording of the app. All app data is demonstrative. Videos pause before another scene appears, and decorative animation respects reduced-motion preferences.
 
 Validation: local server returned HTTP 200, JavaScript syntax and Git whitespace checks passed. The preview-browser service repeatedly timed out, including inventory and reconnect calls, so visual verification of this redesign could not be completed.
+
+## Bright reference theme
+
+`dist/bright-theme.css` restores the original prototype's exact root palette: background #050706, panel #0b100d, line #1b2a20, text #eef3ee, secondary #8a9a8f, accent #a6ff3f and green #2bd67b. The supplied button reference's dominant fill was sampled as RGB(183,255,0), #B7FF00. Primary CTA styling now uses that solid lime, bold black Sora text, rounded corners and a green glow. The hero button is 342 × 54px with an 18px radius, adapting to mobile width. The existing button-only white hover glaze retains its 1s duration and 60ms delay. Invitation labels and page structure remain unchanged. The saturated accent is also carried into the in-phone app UI. Final browser visual review was unavailable due a preview service timeout.
