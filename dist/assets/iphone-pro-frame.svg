@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 760" fill="none">
+ <defs>
+  <linearGradient id="metal" x1="0" y1="0" x2="360" y2="40" gradientUnits="userSpaceOnUse"><stop stop-color="#555b65"/><stop offset=".025" stop-color="#c9cdd2"/><stop offset=".055" stop-color="#f1f3f5"/><stop offset=".11" stop-color="#858d98"/><stop offset=".45" stop-color="#a2a9b0"/><stop offset=".86" stop-color="#626a76"/><stop offset=".95" stop-color="#dce0e5"/><stop offset="1" stop-color="#4a515c"/></linearGradient>
+  <linearGradient id="rim" x1="10" y1="0" x2="340" y2="760" gradientUnits="userSpaceOnUse"><stop stop-color="#e6eaf0"/><stop offset=".25" stop-color="#555d68"/><stop offset=".52" stop-color="#c3c9d1"/><stop offset=".8" stop-color="#4c535e"/><stop offset="1" stop-color="#c4cad0"/></linearGradient>
+  <radialGradient id="lens"><stop stop-color="#284555"/><stop offset=".4" stop-color="#14232e"/><stop offset=".8" stop-color="#060c13"/><stop offset="1" stop-color="#151c24"/></radialGradient>
+  <mask id="cut"><rect width="360" height="760" fill="white"/><rect x="18" y="14" width="324" height="732" rx="47" fill="black"/></mask>
+ </defs>
+ <g mask="url(#cut)">
+  <rect x="7" y="2" width="346" height="756" rx="58" fill="url(#metal)"/>
+  <rect x="10" y="5" width="340" height="750" rx="55" fill="#080b10" stroke="url(#rim)" stroke-width="2"/>
+  <rect x="15" y="10" width="330" height="740" rx="50" fill="#030506" stroke="#222932"/>
+  <path d="M70 5h220M11 76v-8a55 55 0 0 1 55-55h10M349 686v8a55 55 0 0 1-55 55h-10" stroke="#fff" stroke-opacity=".65" stroke-width=".8"/>
+  <path d="M8 120h6M8 635h6M346 120h6M346 635h6" stroke="#3f4652" stroke-width="3"/>
+ </g>
+ <rect x="1" y="135" width="6" height="28" rx="2" fill="url(#metal)" stroke="#58616b" stroke-width=".6"/>
+ <rect x="1" y="186" width="6" height="50" rx="2" fill="url(#metal)" stroke="#58616b" stroke-width=".6"/>
+ <rect x="1" y="251" width="6" height="50" rx="2" fill="url(#metal)" stroke="#58616b" stroke-width=".6"/>
+ <rect x="353" y="211" width="6" height="76" rx="2" fill="url(#metal)" stroke="#58616b" stroke-width=".6"/>
+ <rect x="353" y="407" width="5" height="42" rx="2" fill="#7b8491" stroke="#c4cad1" stroke-width=".6"/>
+ <rect x="126" y="29" width="108" height="31" rx="15.5" fill="#010203"/>
+ <circle cx="215" cy="44.5" r="6" fill="url(#lens)"/><circle cx="214" cy="43" r="1.2" fill="#456479" fill-opacity=".6"/>
+ <path d="M140 735h80" stroke="#eef1f4" stroke-opacity=".82" stroke-width="4" stroke-linecap="round"/>
+</svg>
