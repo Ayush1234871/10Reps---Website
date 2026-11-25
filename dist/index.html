@@ -103,7 +103,7 @@ footer{padding:36px 5vw;display:flex;justify-content:space-between;flex-wrap:wra
 .row{display:flex;gap:10px}.row select{width:110px}.done{display:none;text-align:center;padding:20px 0}
 @media(max-width:860px){nav a:not(.cta2){display:none}.fl{display:none}.story{display:block}.stage{height:46vh;top:56px;margin-bottom:-46vh;z-index:0}.phone{width:min(210px,52vw)}.ch{position:relative;z-index:1;padding-top:54vh;background:linear-gradient(transparent,rgba(5,7,6,.9) 55%)}.wall{grid-template-columns:1fr}}
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
-</style><link rel="stylesheet" href="prototype.css"><link rel="stylesheet" href="product-preview.css"><link rel="stylesheet" href="bright-theme.css"></head><body>
+</style><link rel="stylesheet" href="prototype.css"><link rel="stylesheet" href="product-preview.css"><link rel="stylesheet" href="bright-theme.css"><link rel="stylesheet" href="interaction-polish.css"></head><body>
 <div id="pl"><small>WARMING UP THE EXPERIENCE</small><div id="pn">0</div></div>
 <div id="cg"></div>
 <header><a class="logo" href="#top">10<b>reps</b>.ai</a><nav aria-label="Main navigation"><a href="#features">Features</a><a href="#gallery">The wall</a><a href="#exclusive">Exclusive</a><a href="#faq">FAQ</a><a href="#join" data-open class="cta2">Request your invitation</a></nav></header>
@@ -133,7 +133,7 @@ footer{padding:36px 5vw;display:flex;justify-content:space-between;flex-wrap:wra
 <div class="spots" id="spots"><small>Invitation only. Founding access. Shared ambition.</small></div>
 <button class="btn req" data-open id="join">Request your invitation</button></div><div id="slit"></div>
 <div class="pnl l" id="pl1"><span>Not for everyone.<br>Invitation only.</span></div><div class="pnl r" id="pl2"><span>Not for everyone.<br>Invitation only.</span></div>
-<button id="lk" aria-label="Open the gate"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="10" width="14" height="11" rx="3"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/><path d="M12 14v3"/></svg><span>Reveal your invitation</span></button><div id="gh"><span class="gate-kicker">THE 10REPS FOUNDING CREW</span><span class="gate-description">Join the founding crew. Help shape what comes next.</span><small>Scroll to discover your invitation</small></div>
+<button id="lk" aria-label="Open the gate"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="10" width="14" height="11" rx="3"/><path class="lock-shackle" d="M8 10V7a4 4 0 0 1 8 0v3"/><path d="M12 14v3"/></svg><span>Reveal your invitation</span></button><div id="gh"><span class="gate-kicker">THE 10REPS FOUNDING CREW</span><span class="gate-description">Join the founding crew. Help shape what comes next.</span><small>Scroll to discover your invitation</small></div>
 </div></section>
 
 <div class="faq" id="faq"><div class="faq-heading"><div class="idx">BEFORE YOUR FIRST REP</div><h2>Good questions.<br> Clear answers.</h2></div><div class="faq-items">
@@ -191,7 +191,20 @@ arc.onpointerdown=e=>{drag=1;sx=e.clientX;arc.style.cursor='grabbing'};addEventL
 arc.onpointermove=e=>{if(drag){const d=(sx-e.clientX)/160;if(Math.abs(d)>.25){go(d>0?1:-1);sx=e.clientX}}};
 // gate
 const gt=$('.gate'),pass=$('#pass');let gp=0,gopen=0,fired=0;
-function sc(){const r=gt.getBoundingClientRect(),p=cl(-r.top/(r.height-innerHeight)),t=gopen?1:cl((p-.1)/.45);gp+=(t-gp)*.05;const g=gp>.995?1:gp,e=cl((g-.25)/.6),ee=1-Math.pow(1-e,3);
+let gateUnlocking=false,gateReady=false,gateManualRequested=false,gateUnlockTimer;
+const gateReducedMotion=matchMedia('(prefers-reduced-motion: reduce)').matches;
+function beginGateUnlock(manual=false){
+ if(manual)gateManualRequested=true;
+ if(gateReady){if(manual)gopen=1;return}
+ if(gateUnlocking)return;
+ gateUnlocking=true;const lock=$('#lk');lock.classList.add('unlocking');lock.querySelector('span').textContent='Unlocking…';lock.setAttribute('aria-label','Unlocking invitation');
+ gateUnlockTimer=setTimeout(()=>{gateReady=true;gateUnlocking=false;if(gateManualRequested)gopen=1;lock.querySelector('span').textContent='Invitation unlocked';lock.setAttribute('aria-label','Invitation unlocked');if(gateManualRequested)setTimeout(()=>{if(document.activeElement===lock)$('#join').focus({preventScroll:true})},1100)},gateReducedMotion?0:620);
+}
+
+function sc(){const r=gt.getBoundingClientRect(),p=cl(-r.top/(r.height-innerHeight)),raw=gopen?1:cl((p-.1)/.45);
+ if(raw>.005&&!gateReady&&!gateUnlocking)beginGateUnlock();
+ if(raw<.001&&!gateManualRequested&&gp<.02&&(gateReady||gateUnlocking)){clearTimeout(gateUnlockTimer);gateReady=false;gateUnlocking=false;const lock=$('#lk');lock.classList.remove('unlocking');lock.querySelector('span').textContent='Reveal your invitation';lock.setAttribute('aria-label','Open the gate')}
+ const t=gateReady?raw:0;gp=gateReducedMotion?t:gp+(t-gp)*.035;const g=gp>.995?1:gp,e=cl((g-.25)/.6),ee=1-Math.pow(1-e,3);
  $('#pl1').style.transform=`translateX(${-100*ee}%)`;$('#pl2').style.transform=`translateX(${100*ee}%)`;
  const sl=$('#slit');sl.style.width=(ee*innerWidth)+'px';sl.style.opacity=ee>0?1-cl((ee-.6)/.4):0;
  const lk=$('#lk');lk.style.opacity=cl(1-g*4);lk.style.transform=`translateX(-50%) scale(${1+g*.15})`;lk.style.pointerEvents=g>.05?'none':'';$('#gh').style.opacity=cl(1-g*6);
@@ -199,7 +212,7 @@ function sc(){const r=gt.getBoundingClientRect(),p=cl(-r.top/(r.height-innerHeig
  if(g<.2)fired=0;if(ee>.6&&!fired){fired=1;boom()}}
 function boom(){const sp=$('#spk');sp.innerHTML='';for(let i=0;i<60;i++){const d=document.createElement('i'),a=Math.random()*6.28,q=120+Math.random()*360;d.style.cssText=`--dx:${Math.cos(a)*q}px;--dy:${Math.sin(a)*q}px;--s:${3+Math.random()*7}px;--t:${.9+Math.random()*1.3}s;--c:${i%3?'#a6ff3f':'#fff'}`;sp.appendChild(d)}}
 $('#tw').innerHTML=Array.from({length:26},()=>`<i style="left:${Math.random()*96}%;top:${Math.random()*96}%;--s:${8+Math.random()*16}px;--t:${1.6+Math.random()*2}s;--d:${Math.random()*3}s"></i>`).join('');
-$('#lk').onclick=$('#pl1').onclick=$('#pl2').onclick=()=>{gopen=1};
+$('#lk').onclick=$('#pl1').onclick=$('#pl2').onclick=()=>beginGateUnlock(true);
 fr();
 pass.addEventListener('pointermove',e=>{const b=pass.getBoundingClientRect();pass.style.setProperty('--ry2',((e.clientX-b.left)/b.width-.5)*24+'deg');pass.style.setProperty('--rx',-((e.clientY-b.top)/b.height-.5)*24+'deg')});
 pass.addEventListener('pointerleave',()=>{pass.style.setProperty('--ry2','0deg');pass.style.setProperty('--rx','0deg')});
@@ -209,4 +222,4 @@ $$('[data-open]').forEach(b=>b.addEventListener('click',e=>{e.preventDefault();f
 const cls=()=>m.classList.remove('open');$('#cx').onclick=$('#dd').onclick=cls;m.onclick=e=>{if(e.target===m)cls()};addEventListener('keydown',e=>{if(e.key==='Escape')cls()});
 $('#sub').onclick=()=>{if(!$('#f1').value.trim()||!/\S+@\S+/.test($('#f2').value)){($('#f1').value.trim()?$('#f2'):$('#f1')).focus();return}fm.style.display='none';dn.style.display='block'};
 </script>
-<script src="interactions.js"></script><script src="walkthrough.js"></script></body></html>
+<script src="interactions.js"></script><script src="walkthrough.js"></script><script src="interaction-polish.js"></script></body></html>

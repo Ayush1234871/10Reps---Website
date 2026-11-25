@@ -1,0 +1,20 @@
+/* Store badges retain their familiar black presentation. */
+.store-badge{background:#050505;color:#f4f7f1;border:1px solid #3b483b;border-radius:12px;box-shadow:0 4px 16px #0003;font-weight:600}
+.store-badge span{color:#f4f7f1;font-weight:600}.store-badge small{color:#a6b0a1;font-weight:400}
+.store-badge:hover{background:#0c120d;color:#fff;border-color:#86bd5066;box-shadow:0 6px 24px #0005,0 0 14px #a6ff3f0b}
+/* Quiet edge-lighting adds definition without putting a white glaze on cards. */
+.pts li{position:relative;overflow:hidden;border:1px solid #8fc56536;border-radius:18px;background:radial-gradient(ellipse at 100% 0,#a6ff3f0a,transparent 55%),linear-gradient(140deg,#111b14,#080e0a);box-shadow:inset 0 1px 0 #caff9d0b,0 8px 24px #0002;transition:border-color .32s,box-shadow .32s}
+.pts em{background:#0b140d;border:1px solid #a6ff3f33;box-shadow:inset 0 1px 0 #d0ffab0d}
+.fc{border-color:#8fc56536;background:radial-gradient(ellipse at 0 0,#a6ff3f09,transparent 65%),linear-gradient(145deg,#111b14,#070d09);box-shadow:inset 0 1px 0 #caff9d0b;transition:border-color .32s,box-shadow .32s}
+.fc.act{border-color:#a6ff3f99;box-shadow:inset 0 1px 0 #d3ffaf16,0 0 32px -15px #a6ff3f55}
+.wall-photo{border-color:#9ad57226;box-shadow:inset 0 1px 0 #caff9d0a}
+.pass{border-color:#a6ff3f55}
+:is(.p-mini-card,.p-plan-banner,.p-snap-card,.p-challenge,.p-progress-panel,.p-achievement,.p-recovery-options>div){border-color:#a6ff3f29;box-shadow:inset 0 1px 0 #ceffa00d}
+.p-coach{border-color:#a6ff3f40;box-shadow:inset 0 1px 0 #ceffa00d}
+@media(hover:hover){.pts li:hover{border-color:#a6ff3f70;box-shadow:inset 0 1px 0 #d2ffa71a,0 8px 28px #0003,0 0 20px #a6ff3f09}.fc:hover{border-color:#a6ff3f80}.wall-photo:hover{border-color:#a6ff3f55}}
+/* The shackle rotates away from the lock body before the doors begin to open. */
+#lk .lock-shackle{transform-box:view-box;transform-origin:8px 10px;transition:transform .58s cubic-bezier(.22,1,.36,1)}
+#lk.unlocking .lock-shackle{transform:translateY(-.6px) rotate(-32deg)}
+#lk.unlocking svg{filter:drop-shadow(0 0 3px #ffffff44)}
+.faq details[open] p{animation:none}.faq details{overflow-anchor:none}.faq details[data-expanded="false"] summary::after{transform:none}.faq details[data-expanded="true"] summary::after{transform:rotate(45deg)}
+@media(prefers-reduced-motion:reduce){#lk .lock-shackle{transition:none}.pts li,.fc{transition:none}}
