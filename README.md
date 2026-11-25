@@ -33,3 +33,7 @@ This is a marketing website concept, not a working fitness app. Phone data, coac
 ## Verification
 
 Checked desktop and 390px mobile layouts, sticky positioning and screen transitions, all three phone screen contents fitting above navigation, wall assembly, store notices, invitation validation/confirmation and browser error logs. JavaScript syntax checked with Node.
+
+## Four-tab walkthrough update
+
+`dist/walkthrough.js` adds automatically scrolling in-phone interface previews. The hero cycles through Home, Workout, Community and Profile. The planning chapter loops session planning and exercise execution; the routine chapter loops routine/recovery, profile analytics and community. Playback follows the section at the viewport reading line, pauses off-screen, while a dialog is open or while preview tabs have keyboard focus, and respects reduced-motion preferences. These are DOM-based interface concepts, not video recordings of the actual app. The founding gate now says “Not for everyone. Invitation only.” and its copy consistently explains invitation-based access.

@@ -128,11 +128,11 @@ footer{padding:36px 5vw;display:flex;justify-content:space-between;flex-wrap:wra
 
 <section class="gate" id="exclusive"><div class="stick">
 <div class="rev" id="rev"><div class="rays"></div><div id="tw"></div><div id="spk"></div>
-<p class="k">A more personal way in.</p><p class="k2">We’re starting with a smaller founding crew, so we can build the experience with the people who use it.</p>
-<div class="pass" id="pass"><div class="sh"></div><div class="gt"></div><div class="pt">10<b>reps</b>.ai</div><div class="pass-label">FOUNDING MEMBERSHIP</div><div class="pass-title">Your next chapter.<br>Our first crew.</div><div class="pn">For the ones ready to make it their own.</div><div class="pm"><span>INVITATION ONLY</span><span>10REPS ORIGINALS</span></div></div>
-<div class="spots" id="spots"><small>Early access. Shared ambition. A voice in what comes next.</small></div>
+<p class="k">Access starts with an invitation.</p><p class="k2">10reps is an invite-only experience. Request an invitation to join the founding crew and help shape what comes next.</p>
+<div class="pass" id="pass"><div class="sh"></div><div class="gt"></div><div class="pt">10<b>reps</b>.ai</div><div class="pass-label">FOUNDING MEMBERSHIP</div><div class="pass-title">Your invitation.<br>A different beginning.</div><div class="pn">A personal invitation to the 10reps founding crew.</div><div class="pm"><span>INVITATION ONLY</span><span>10REPS ORIGINALS</span></div></div>
+<div class="spots" id="spots"><small>Invitation only. Founding access. Shared ambition.</small></div>
 <button class="btn req" data-open id="join">Request my invitation</button></div><div id="slit"></div>
-<div class="pnl l" id="pl1"><span>Not for everyone.<br>By design.</span></div><div class="pnl r" id="pl2"><span>Not for everyone.<br>By design.</span></div>
+<div class="pnl l" id="pl1"><span>Not for everyone.<br>Invitation only.</span></div><div class="pnl r" id="pl2"><span>Not for everyone.<br>Invitation only.</span></div>
 <button id="lk" aria-label="Open the gate">🔒</button><div id="gh">Scroll to reveal. Or select the lock.</div>
 </div></section>
 
@@ -166,7 +166,7 @@ const SC=["<div class=\"app-heading\"><div><small>YOUR SPACE TO GET STRONGER</sm
 const scr=$('#screen'),rys=[-12,9,-9,9,-7];
 SC.forEach((h,i)=>{const d=document.createElement('div');d.className='scr';d.dataset.screen=i;d.innerHTML=h;scr.appendChild(d)});
 const S=$$('.scr');let cur=-1,rt;
-function setS(i){if(i===cur)return;cur=i;document.body.classList.toggle('s0',i===0);S.forEach((s,k)=>s.classList.toggle('on',k===i));$('#phone').style.setProperty('--ry',rys[i]+'deg');
+function setS(i){if(i===cur)return;cur=i;document.body.classList.toggle('s0',i===0);S.forEach((s,k)=>s.classList.toggle('on',k===i));$('#phone').style.setProperty('--ry',rys[i]+'deg');if(typeof startWalkthrough==='function')startWalkthrough(i);
 }
 
 const chIO=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');setS(+e.target.dataset.s)}}),{rootMargin:'-45% 0px -45% 0px'});
@@ -209,4 +209,4 @@ $$('[data-open]').forEach(b=>b.addEventListener('click',e=>{e.preventDefault();f
 const cls=()=>m.classList.remove('open');$('#cx').onclick=$('#dd').onclick=cls;m.onclick=e=>{if(e.target===m)cls()};addEventListener('keydown',e=>{if(e.key==='Escape')cls()});
 $('#sub').onclick=()=>{if(!$('#f1').value.trim()||!/\S+@\S+/.test($('#f2').value)){($('#f1').value.trim()?$('#f2'):$('#f1')).focus();return}fm.style.display='none';dn.style.display='block'};
 </script>
-<script src="interactions.js"></script></body></html>
+<script src="interactions.js"></script><script src="walkthrough.js"></script></body></html>
