@@ -17,10 +17,14 @@ const demoExecution=demoHeader('WORKOUT · SESSION PREVIEW','One focused set at 
 const demoRecovery=SC[2]+demoCoach('A rest day is still part of the plan.','Move your session when life moves first.')+demoRow('Next session','Ready when you are');
 const demoAnalytics=demoHeader('PROFILE · YOUR TRAINING STORY','Progress beyond the mirror.')+SC[2].match(/<div class="momentum-card">.*?<\/div>/s)[0]+demoRow('Workout history','Every session in context')+demoRow('Personal records','See what is changing')+'<div class="demo-milestone"><span>FIND YOUR RHYTHM</span><b>Progress has more than one shape.</b><p>Look at your training, recovery and effort together.</p></div>'+demoCoach('A useful view of your effort.','Understand patterns over time, at your own pace.')+'<div class="app-action">Explore your history</div>';
 const demoContent=[demoHome,demoWorkout,demoCommunity,demoProfile];
+const heroWorkout=demoHeader('WORKOUT','A session for your day.','▦')+'<div class="demo-milestone"><span>YOUR TRAINING, ORGANIZED</span><b>A clear place to start.</b><p>Find your plan, explore exercises and take your next session with you.</p></div>'+demoExercise('Your next workout','Matched to your goal')+demoRow('Your equipment','Built into the plan')+'<div class="app-action">Explore workouts</div>';
+const heroCommunity=demoHeader('COMMUNITY','Keep your people close.','◎')+demoGallery+'<div class="demo-milestone"><span>BETTER TOGETHER</span><b>Your squad is in your corner.</b><p>Share a snap. Start a chat. Celebrate the everyday wins.</p></div>';
+const heroProfile=demoHeader('PROFILE','Your training. Your story.')+'<div class="demo-profile"><span class="profile-portrait">A</span><b>A space that is yours.</b><small>Your goals, preferences and milestones.</small></div>'+demoRow('Your focus','Build strength')+demoRow('Your progress','See the bigger picture')+'<div class="app-action">Make it personal</div>';
+const planningSetup=demoHeader('WORKOUT · BUILD YOUR SESSION','Your gym. Your plan.','⌖')+'<div class="gym-connected"><span class="connected-check">✓</span><div><b>Connect Your Gym</b><small>Plan with the equipment around you.</small></div></div><div class="demo-milestone"><span>WHAT YOU HAVE. WHAT YOU NEED.</span><b>A session that fits your setup.</b><p>Choose your focus and the equipment available. Give your effort a clear direction.</p></div>'+demoRow('Training focus','Upper body')+demoRow('Available equipment','Dumbbells · Cable station')+demoExercise('Dumbbell press','Matched to your setup')+demoExercise('Seated cable row','Ready for your next set','⌁')+'<div class="app-action">Your session is ready</div>';
 const demoSequences=[
- [{tab:0,html:demoHome,duration:6500},{tab:1,html:demoWorkout,duration:6000},{tab:2,html:demoCommunity,duration:6000},{tab:3,html:demoProfile,duration:6000}],
- [{tab:1,html:demoWorkout,duration:6500},{tab:1,html:demoExecution,duration:6500}],
- [{tab:0,html:demoRecovery,duration:6500},{tab:3,html:demoAnalytics,duration:6500},{tab:2,html:demoCommunity,duration:6000}]
+ [{tab:0,html:demoHome,duration:6500},{tab:1,html:heroWorkout,duration:5000},{tab:2,html:heroCommunity,duration:5500},{tab:3,html:heroProfile,duration:5000}],
+ [{tab:1,html:planningSetup,duration:6500},{tab:1,html:demoExecution,duration:6500}],
+ [{tab:0,html:demoRecovery,duration:6500},{tab:3,html:demoAnalytics,duration:6500}]
 ];
 let demoChapter=0,demoPhase=0,demoElapsed=0,demoLast=performance.now(),demoViewport,demoTrack,demoOnScreen=true;
 function renderDemo(step){
@@ -35,6 +39,18 @@ function renderDemo(step){
 function startWalkthrough(chapter){
  demoChapter=chapter;demoPhase=0;demoElapsed=0;demoLast=performance.now();renderDemo(demoSequences[chapter][0]);
 }
+function syncWalkthroughChapter(){
+ const readingLine=innerHeight*.5;
+ const chapters=[...document.querySelectorAll('.ch')];
+ const index=chapters.findIndex(chapter=>{const bounds=chapter.getBoundingClientRect();return bounds.top<=readingLine&&bounds.bottom>readingLine});
+ if(index>=0){
+  if(cur!==index)setS(index);
+  else if(demoChapter!==index)startWalkthrough(index);
+ }
+}
+let chapterUpdatePending=false;
+function queueChapterUpdate(){if(chapterUpdatePending)return;chapterUpdatePending=true;requestAnimationFrame(()=>{chapterUpdatePending=false;syncWalkthroughChapter()})}
+addEventListener('scroll',queueChapterUpdate,{passive:true});addEventListener('resize',queueChapterUpdate);
 demoNav.querySelectorAll('button').forEach(button=>button.addEventListener('click',()=>{
  const tab=Number(button.dataset.demoTab);demoElapsed=0;demoLast=performance.now();
  // A manual selection previews that tab, then the section walkthrough resumes.
@@ -44,9 +60,6 @@ new IntersectionObserver(entries=>entries.forEach(entry=>{demoOnScreen=entry.isI
 document.addEventListener('visibilitychange',()=>{demoLast=performance.now()});
 function tickWalkthrough(now){
  if(now-demoLast<40){requestAnimationFrame(tickWalkthrough);return}
- const readingLine=innerHeight*.5;
- const readingChapter=[...document.querySelectorAll('.ch')].findIndex(chapter=>{const bounds=chapter.getBoundingClientRect();return bounds.top<=readingLine&&bounds.bottom>readingLine});
- if(readingChapter>=0&&readingChapter!==demoChapter)setS(readingChapter);
  const delta=Math.min(now-demoLast,100);demoLast=now;
  if(!reducedMotion&&!document.hidden&&demoOnScreen&&!document.querySelector('#modal').classList.contains('open')&&!document.querySelector('#footer-info').open&&!demoNav.matches(':focus-within')){
   demoElapsed+=delta;let step=demoSequences[demoChapter][demoPhase];
@@ -55,4 +68,4 @@ function tickWalkthrough(now){
  }
  requestAnimationFrame(tickWalkthrough);
 }
-startWalkthrough(Math.max(0,cur));requestAnimationFrame(tickWalkthrough);
+startWalkthrough(Math.max(0,cur));syncWalkthroughChapter();requestAnimationFrame(tickWalkthrough);
