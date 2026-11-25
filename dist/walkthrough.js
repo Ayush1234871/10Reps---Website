@@ -9,12 +9,12 @@ document.querySelectorAll('.pts em').forEach((e,i)=>{e.innerHTML=appIcon(benefit
 document.querySelectorAll('.fc .ic').forEach((e,i)=>{e.innerHTML=appIcon(['location','spark','community','chart','moon','trophy'][i],'site-icon');e.setAttribute('aria-hidden','true')});
 const phoneNotes=document.createElement('div');phoneNotes.className='phone-notes';phoneNotes.setAttribute('aria-label','Training benefits');document.querySelector('.stage').append(phoneNotes);
 const chapterNotes=[
- [['spark','Know your next move','RepStart AI, close at hand.'],['community','Keep going, together','Your squad is in your corner.'],['gym','One connected routine','Plan. Train. Look back.']],
- [['location','Your gym. Your plan.','Built for your equipment.'],['spark','Guidance, in reach','Find a cue. Choose a movement.'],['check','Less deciding','A clear session to follow.']],
- [['calendar','Life happens. Adjust.','Move a session. Keep your routine.'],['chart','See the small wins','Your history tells a fuller story.'],['community','Your squad, beside you','Share the return, too.']]
+ [['CONSISTENCY','One more reason to show up'],['YOUR SQUAD','A new PR. A shared celebration.'],['WORKOUT GOAL','Today’s session completed']],
+ [['YOUR GYM','Your equipment. Your session.'],['REPSTART AI','Clear guidance for your next set'],['WORKOUT GOAL','A plan you can put into action']],
+ [['YOUR ROUTINE','A missed day isn’t a restart'],['YOUR SQUAD','Your effort has company'],['WORKOUT GOAL','Another session in your story']]
 ];
 let noteChapter=-1;
-function syncPhoneNotes(chapter){if(noteChapter===chapter)return;noteChapter=chapter;phoneNotes.innerHTML=chapterNotes[chapter].map(([icon,title,copy])=>`<div class="phone-note"><span class="phone-note-icon">${appIcon(icon,'site-icon')}</span><div class="phone-note-copy"><b>${title}</b><small>${copy}</small></div></div>`).join('')}
+function syncPhoneNotes(chapter){if(noteChapter===chapter)return;noteChapter=chapter;phoneNotes.innerHTML=chapterNotes[chapter].map(([label,text],i)=>`<div class="phone-note"><span class="phone-note-label">${label}</span><div class="phone-note-status"><i class="note-status-dot" aria-hidden="true"></i><b>${text}</b>${i===2?'<span class="note-equalizer" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span>':''}</div></div>`).join('')}
 const appTabs=['Home','Workout','Community','Profile'];
 const appNav=document.querySelector('.device-nav');
 appNav.innerHTML=appTabs.map((name,i)=>`<button type="button" data-app-tab="${i}" aria-label="Preview ${name} tab">${appIcon(['home','workout','community','profile'][i])}<small>${name}</small></button>`).join('');

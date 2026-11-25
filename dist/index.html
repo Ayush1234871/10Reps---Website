@@ -16,7 +16,7 @@ a{color:inherit;text-decoration:none}:focus-visible{outline:2px solid var(--ac);
 header{position:fixed;top:0;left:0;right:0;z-index:40;display:flex;justify-content:space-between;align-items:center;padding:18px 5vw;backdrop-filter:blur(10px);background:rgba(5,7,6,.55)}
 .logo{font-weight:800;font-size:22px;letter-spacing:-.5px}.logo b{color:var(--ac)}
 nav{display:flex;align-items:center;gap:32px}nav a{font-size:15px;color:var(--tx);opacity:.8;transition:.25s}nav a:hover{color:var(--ac);opacity:1}nav a.cta2{background:var(--ac);color:#06100a;opacity:1;padding:11px 22px;border-radius:99px;font-weight:600}nav a.cta2:hover{color:#06100a;box-shadow:0 8px 30px -8px rgba(166,255,63,.6)}
-.btn{display:inline-flex;align-items:center;gap:10px;padding:16px 28px;border-radius:99px;border:0;background:var(--ac);color:#06100a;font:600 16px Sora,sans-serif;cursor:pointer;transition:transform .25s,box-shadow .25s}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:16px 28px;border-radius:99px;border:0;background:var(--ac);color:#06100a;font:600 16px var(--font-ui);cursor:pointer;transition:transform .25s,box-shadow .25s}
 .btn:hover{transform:translateY(-2px);box-shadow:0 10px 40px -8px rgba(166,255,63,.6)}.btn.ghost{background:transparent;color:var(--tx);border:1px solid var(--line)}
 section,.story{position:relative;z-index:1}
 h1,h2{font-weight:800;letter-spacing:-.04em;margin:0 0 20px}h1{font-size:clamp(40px,5.6vw,88px);line-height:1}h2{font-size:clamp(30px,4vw,60px);line-height:1.04}
@@ -99,12 +99,13 @@ footer{padding:36px 5vw;display:flex;justify-content:space-between;flex-wrap:wra
 .modal{position:fixed;inset:0;z-index:90;display:none;place-items:center;background:rgba(0,0,0,.75);backdrop-filter:blur(8px);padding:20px}.modal.open{display:grid}
 .box{width:min(460px,100%);max-height:92vh;overflow:auto;background:var(--bg2);border:1px solid var(--line);border-radius:28px;padding:30px;position:relative;animation:pop .35s cubic-bezier(.2,.8,.2,1)}@keyframes pop{from{transform:scale(.92);opacity:0}}
 .box h2{font-size:26px;margin:0 0 6px}.box p{color:var(--mu);font-size:14px;margin:0 0 20px}.x{position:absolute;top:16px;right:18px;background:none;border:0;color:var(--mu);font-size:26px;cursor:pointer}
-.box input,.box select{width:100%;margin-bottom:12px;padding:14px 16px;border-radius:14px;border:1px solid var(--line);background:#070b08;color:var(--tx);font:400 15px Sora,sans-serif}.box input:focus,.box select:focus{outline:none;border-color:var(--ac)}
+.box input,.box select{width:100%;margin-bottom:12px;padding:14px 16px;border-radius:14px;border:1px solid var(--line);background:#070b08;color:var(--tx);font:400 15px var(--font-ui)}.box input:focus,.box select:focus{outline:none;border-color:var(--ac)}
 .row{display:flex;gap:10px}.row select{width:110px}.done{display:none;text-align:center;padding:20px 0}
 @media(max-width:860px){nav a:not(.cta2){display:none}.fl{display:none}.story{display:block}.stage{height:46vh;top:56px;margin-bottom:-46vh;z-index:0}.phone{width:min(210px,52vw)}.ch{position:relative;z-index:1;padding-top:54vh;background:linear-gradient(transparent,rgba(5,7,6,.9) 55%)}.wall{grid-template-columns:1fr}}
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 </style><link rel="stylesheet" href="prototype.css"><link rel="stylesheet" href="product-preview.css"><link rel="stylesheet" href="bright-theme.css"><link rel="stylesheet" href="interaction-polish.css">
-<link rel="stylesheet" href="content-refinements.css"></head><body>
+<link rel="stylesheet" href="content-refinements.css">
+<link rel="stylesheet" href="status-cards.css"></head><body>
 <div id="pl"><small>WARMING UP THE EXPERIENCE</small><div id="pn">0</div></div>
 <div id="cg"></div>
 <header><a class="logo" href="#top">10<b>reps</b>.ai</a><nav aria-label="Main navigation"><a href="#features">Features</a><a href="#gallery">The wall</a><a href="#exclusive">Exclusive</a><a href="#faq">FAQ</a><a href="#join" data-open class="cta2">Request your invitation</a></nav></header>
@@ -125,7 +126,7 @@ footer{padding:36px 5vw;display:flex;justify-content:space-between;flex-wrap:wra
 
 </section>
 
-<section class="gallery-wall" id="gallery"><div class="wall-grid"><div class="wall-copy"><div class="idx">THE 10REPS WALL</div><h2>Different starting points.<br>One shared feeling.<br><span>We keep showing up.</span></h2><p>Some days you bring the energy. Some days your squad does.<br>Share the effort, the small wins and the return after a break.</p></div><figure class="wall-photo wall-photo-1" style="--delay:70ms" role="img" aria-label="Athlete after a training session"></figure><figure class="wall-photo wall-photo-2" style="--delay:140ms" role="img" aria-label="Athlete performing a landmine press"></figure><figure class="wall-photo wall-photo-3" style="--delay:210ms" role="img" aria-label="Athlete doing a dumbbell row"></figure><figure class="wall-photo wall-photo-4" style="--delay:280ms" role="img" aria-label="Athlete jumping onto a training box"></figure><figure class="wall-photo wall-photo-5" style="--delay:350ms" role="img" aria-label="Athlete walking through the gym"></figure></div><p class="wall-disclosure">A vision of the 10reps community · AI-generated imagery</p></section>
+<section class="gallery-wall" id="gallery"><div class="wall-grid"><div class="wall-copy"><div class="idx">THE 10REPS WALL</div><h2>Different starting points.<br>One shared feeling.<br><span>We keep showing up.</span></h2><p>Some days you bring the energy. Some days your squad does.<br>Share the effort, the small wins and the return after a break.</p></div><figure class="wall-photo wall-photo-1" style="--delay:70ms" role="img" aria-label="Athlete performing a dumbbell shoulder press"></figure><figure class="wall-photo wall-photo-2" style="--delay:140ms" role="img" aria-label="Athlete completing a barbell deadlift"></figure><figure class="wall-photo wall-photo-3" style="--delay:210ms" role="img" aria-label="Athlete doing a dumbbell row"></figure><figure class="wall-photo wall-photo-4" style="--delay:280ms" role="img" aria-label="Athlete performing a seated cable row"></figure><figure class="wall-photo wall-photo-5" style="--delay:350ms" role="img" aria-label="Athlete walking through the gym"></figure></div><p class="wall-disclosure">A vision of the 10reps community · AI-generated imagery</p></section>
 
 <section class="gate" id="exclusive"><div class="stick">
 <div class="rev" id="rev"><div class="rays"></div><div id="tw"></div><div id="spk"></div>
@@ -192,24 +193,24 @@ arc.onpointerdown=e=>{drag=1;sx=e.clientX;arc.style.cursor='grabbing'};addEventL
 arc.onpointermove=e=>{if(drag){const d=(sx-e.clientX)/160;if(Math.abs(d)>.25){go(d>0?1:-1);sx=e.clientX}}};
 // gate
 const gt=$('.gate'),pass=$('#pass');let gp=0,gopen=0,fired=0;
-let gateUnlocking=false,gateReady=false,gateManualRequested=false,gateUnlockTimer;
+let gateUnlocking=false,gateReady=false,gateManualRequested=false,gateUnlockTimer,gateLastFrame=performance.now();
 const gateReducedMotion=matchMedia('(prefers-reduced-motion: reduce)').matches;
 function beginGateUnlock(manual=false){
  if(manual)gateManualRequested=true;
  if(gateReady){if(manual)gopen=1;return}
  if(gateUnlocking)return;
  gateUnlocking=true;const lock=$('#lk');lock.classList.add('unlocking');lock.querySelector('span').textContent='Unlocking…';lock.setAttribute('aria-label','Unlocking invitation');
- gateUnlockTimer=setTimeout(()=>{gateReady=true;gateUnlocking=false;if(gateManualRequested)gopen=1;lock.querySelector('span').textContent='Invitation unlocked';lock.setAttribute('aria-label','Invitation unlocked');if(gateManualRequested)setTimeout(()=>{if(document.activeElement===lock)$('#join').focus({preventScroll:true})},1100)},gateReducedMotion?0:620);
+ gateUnlockTimer=setTimeout(()=>{gateReady=true;gateUnlocking=false;if(gateManualRequested)gopen=1;lock.querySelector('span').textContent='Invitation unlocked';lock.setAttribute('aria-label','Invitation unlocked');if(gateManualRequested)setTimeout(()=>{if(document.activeElement===lock)$('#join').focus({preventScroll:true})},2200)},gateReducedMotion?0:950);
 }
 
 function sc(){const r=gt.getBoundingClientRect(),p=cl(-r.top/(r.height-innerHeight)),raw=gopen?1:cl((p-.1)/.45);
  if(raw>.005&&!gateReady&&!gateUnlocking)beginGateUnlock();
  if(raw<.001&&!gateManualRequested&&gp<.02&&(gateReady||gateUnlocking)){clearTimeout(gateUnlockTimer);gateReady=false;gateUnlocking=false;const lock=$('#lk');lock.classList.remove('unlocking');lock.querySelector('span').textContent='Reveal your invitation';lock.setAttribute('aria-label','Open the gate')}
- const t=gateReady?raw:0;gp=gateReducedMotion?t:gp+(t-gp)*.035;const g=gp>.995?1:gp,e=cl((g-.25)/.6),ee=1-Math.pow(1-e,3);
+ const now=performance.now(),dt=Math.min((now-gateLastFrame)/1000,.05);gateLastFrame=now;const t=gateReady?raw:0;gp=gateReducedMotion?t:gp+(t-gp)*(1-Math.exp(-dt/0.62));if(Math.abs(t-gp)<.0005)gp=t;const g=gp,e=cl((g-.08)/.87),ee=e*e*(3-2*e);
  $('#pl1').style.transform=`translateX(${-100*ee}%)`;$('#pl2').style.transform=`translateX(${100*ee}%)`;
  const sl=$('#slit');sl.style.width=(ee*innerWidth)+'px';sl.style.opacity=ee>0?1-cl((ee-.6)/.4):0;
  const lk=$('#lk');lk.style.opacity=cl(1-g*4);lk.style.transform=`translateX(-50%) scale(${1+g*.15})`;lk.style.pointerEvents=g>.05?'none':'';$('#gh').style.opacity=cl(1-g*6);
- const rv=$('#rev');rv.style.opacity=cl(ee*1.4);rv.style.transform=`scale(${.8+.2*ee})`;rv.classList.toggle('lit',ee>.55);$('#spots').classList.toggle('in',ee>.8);
+ const rv=$('#rev');rv.style.opacity=cl((ee-.08)/.8);rv.style.transform=`scale(${.96+.04*ee})`;rv.classList.toggle('lit',ee>.55);$('#spots').classList.toggle('in',ee>.8);
  if(g<.2)fired=0;if(ee>.6&&!fired){fired=1;boom()}}
 function boom(){const sp=$('#spk');sp.innerHTML='';for(let i=0;i<60;i++){const d=document.createElement('i'),a=Math.random()*6.28,q=120+Math.random()*360;d.style.cssText=`--dx:${Math.cos(a)*q}px;--dy:${Math.sin(a)*q}px;--s:${3+Math.random()*7}px;--t:${.9+Math.random()*1.3}s;--c:${i%3?'#a6ff3f':'#fff'}`;sp.appendChild(d)}}
 $('#tw').innerHTML=Array.from({length:26},()=>`<i style="left:${Math.random()*96}%;top:${Math.random()*96}%;--s:${8+Math.random()*16}px;--t:${1.6+Math.random()*2}s;--d:${Math.random()*3}s"></i>`).join('');

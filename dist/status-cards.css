@@ -1,0 +1,23 @@
+/* Reference-inspired wide status cards, kept separate from app screen content. */
+:root{--font-ui:Sora,system-ui,-apple-system,"Segoe UI",sans-serif}
+body,button,input,select,textarea,dialog,.product-app{font-family:var(--font-ui)}
+.phone-note{display:block;width:248px;min-height:76px;padding:14px 17px;border-radius:20px;border:1px solid #c3d5bc1c;background:#080e0bf5;box-shadow:0 10px 30px #0002,inset 0 1px 0 #c7edb205}
+.phone-note:nth-child(1){left:-26px;top:21%;transform:rotate(-1deg)}
+.phone-note:nth-child(2){width:272px;right:0;top:46%;transform:rotate(1deg)}
+.phone-note:nth-child(3){display:block;width:296px;left:-26px;bottom:13%;transform:rotate(-1deg)}
+.phone-note-label{display:block;font-size:10px;line-height:1.5;font-weight:800;letter-spacing:.16em;color:#a0aca2;margin-bottom:6px}
+.phone-note-status{display:flex;align-items:center;gap:9px;min-width:0}
+.phone-note-status b{font-size:13px;line-height:1.5;font-weight:600;white-space:nowrap;letter-spacing:-.035em}
+.note-status-dot{display:block;flex:none;width:7px;height:7px;border-radius:50%;background:var(--button-lime);box-shadow:0 0 9px #b7ff0066}
+.note-equalizer{display:flex;align-items:end;justify-content:center;gap:3px;width:25px;height:17px;flex:none;margin-left:auto;color:var(--button-lime)}
+.note-equalizer i{display:block;width:3px;height:100%;border-radius:1px;background:currentColor;transform-origin:center bottom;animation:equalizer-bounce 1.15s ease-in-out infinite alternate}
+.note-equalizer i:nth-child(2){animation-delay:-.3s;height:65%}.note-equalizer i:nth-child(3){animation-delay:-.7s;height:85%}.note-equalizer i:nth-child(4){animation-delay:-.15s;height:50%}.note-equalizer i:nth-child(5){animation-delay:-.5s;height:75%}
+@keyframes equalizer-bounce{0%{transform:scaleY(.25);opacity:.55}50%{transform:scaleY(.85);opacity:.9}100%{transform:scaleY(1);opacity:1}}
+#lk .lock-shackle{transition-duration:.85s;transition-timing-function:cubic-bezier(.45,0,.2,1)}
+.gate .rev{will-change:opacity,transform}.gate .pnl{will-change:transform}
+.wall-photo-1{background-image:url('assets/wall-shoulder-press.png');background-size:cover;background-position:center 30%}
+.wall-photo-2{background-image:url('assets/wall-deadlift.png');background-size:cover;background-position:center}
+.wall-photo-4{background-image:url('assets/wall-cable-row.png');background-size:cover;background-position:center}
+@media(min-width:861px) and (max-width:1100px){.phone-note{width:222px;left:-12px;padding:13px}.phone-note:nth-child(2){width:240px;right:0}.phone-note:nth-child(3){width:262px;left:-12px}.phone-note-status b{font-size:12px}}
+@media(max-width:860px){.phone-note{width:207px;min-height:60px;padding:11px 13px;border-radius:17px}.phone-note:nth-child(1){left:1%;top:7%}.phone-note:nth-child(2){width:225px;right:1%;top:43%}.phone-note:nth-child(3){display:block;width:251px;left:2%;top:76%;bottom:auto}.phone-note-label{font-size:8px;letter-spacing:.14em;margin-bottom:4px}.phone-note-status{gap:7px}.phone-note-status b{font-size:11px}.note-status-dot{width:6px;height:6px}.note-equalizer{width:21px;height:14px;gap:2px}.note-equalizer i{width:2.5px}}
+@media(prefers-reduced-motion:reduce){.phone-note,.note-equalizer i{animation:none}.note-equalizer i:nth-child(odd){transform:scaleY(.5)}#lk .lock-shackle{transition:none}}
