@@ -17,7 +17,7 @@ html{scroll-padding-top:90px}.scr[data-screen="1"]{gap:9px}.scr[data-screen="1"]
 :is(.btn,nav .cta2,.footer-invite,.store-badge,#lk){position:relative;overflow:hidden;isolation:isolate}
 .gate #lk{position:absolute}
 :is(.btn,nav .cta2,.footer-invite,.store-badge,#lk)::after{content:'';position:absolute;inset:-60% -50%;z-index:2;pointer-events:none;background:linear-gradient(112deg,transparent 40%,rgba(255,255,255,.12) 45%,rgba(255,255,255,.8) 49%,rgba(255,255,255,.24) 53%,transparent 59%);transform:translateX(-110%);animation:none;mix-blend-mode:screen}
-@media(hover:hover){:is(.btn,nav .cta2,.footer-invite,.store-badge,#lk):hover::after{animation:button-glaze .72s cubic-bezier(.2,.65,.3,1) both}}
-:is(.btn,nav .cta2,.footer-invite,.store-badge,#lk):focus-visible::after{animation:button-glaze .72s cubic-bezier(.2,.65,.3,1) both}
+@media(hover:hover){:is(.btn,nav .cta2,.footer-invite,.store-badge,#lk):hover::after{animation:button-glaze 1s cubic-bezier(.2,.65,.3,1) .06s both}}
+:is(.btn,nav .cta2,.footer-invite,.store-badge,#lk):focus-visible::after{animation:button-glaze 1s cubic-bezier(.2,.65,.3,1) .06s both}
 @keyframes button-glaze{from{transform:translateX(-110%)}to{transform:translateX(110%)}}
 @media(prefers-reduced-motion:reduce){:is(.btn,nav .cta2,.footer-invite,.store-badge,#lk)::after{animation:none!important}}
