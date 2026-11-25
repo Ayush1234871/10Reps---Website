@@ -1,41 +1,35 @@
-# 10reps / RepStart AI website concept
+# 10reps — Sticky mobile website prototype
 
-Responsive, buildless HTML, CSS and JavaScript implementation based on the supplied `10reps-v2.html` prototype.
+Built from the supplied `10reps.ai — Early access.html`, using the latest section-order and six-feature references.
 
-## Preview locally
+## Run and edit
 
-Run `python -m http.server 4173 --directory dist` in this directory, then open http://localhost:4173.
+Run `python -m http.server 4175 --directory dist`, then open http://localhost:4175.
 
-Edit `dist/index.html`, `dist/style.css`, and `dist/enhancements.js` directly. No package install or build is required. `refine.py` records the initial transformation of the supplied Downloads prototype; it is not required to run the website.
+Current files: `dist/index.html`, `dist/prototype.css`, `dist/interactions.js`. No build or dependency installation is needed. Python transformation scripts and the older CSS/JS files record earlier iterations; edit the current files directly.
 
-## Included
+## Page order
 
-- Outcome-led hero and RepStart AI positioning.
-- Feature panels rotate every three seconds when in view; pause during hover, keyboard interaction, hidden-tab viewing, or reduced-motion preferences. No feature countdown bars.
-- Workout filters, session cards, locally bundled video with play/pause.
-- Original draggable feature carousel with keyboard-accessible previous, next and pause controls.
-- Personalisation, community and recognition stories; original three-step onboarding.
-- Keyboard/touch-accessible illustrative training history.
-- Reference-inspired staggered five-photo training wall.
-- Original scroll/click reveal interaction, now labelled Built for everyone.
-- Validated signup demo, Escape dismissal, focus trapping and return focus.
+1. Sticky mobile experience: hero, equipment-aware planning, sustainable routine.
+2. Automatic six-card semicircle covering the supplied feature ecosystem.
+3. The 10reps Wall: reference-matched grid with left/right scroll entrance.
+4. Not for everyone. By design: founding membership gate and invitation card.
+5. Compact questions.
+6. Final invitation and coming-soon store badges.
+7. Product, community, support and legal-information footer.
 
-## Prototype boundaries
-
-This is a website concept, not the fitness app. Phone interfaces, AI guidance, workout statistics and community activity are illustrative. Signup does not store or transmit data. Connect the approved signup service and confirm product capabilities, availability and policies before public launch.
+The redesigned phone uses a metallic frame, camera island, status bar, app navigation and three custom screens tied to scroll position. Neon CTAs use layered crystal facets and a moving sheen. Reduced-motion styles disable decorative movement. Invitation modals support focus trapping, Escape and focus return.
 
 ## Assets
 
-`dist/assets/training-editorial.png`: generated with the built-in ImageGen tool. Prompt: “Premium editorial fitness photography contact sheet: exactly five equal-width panels in a dark modern gym; South Asian woman portrait, man performing landmine press, woman dumbbell row, man box step-up, woman overhead press; charcoal environment, olive/lime accents, natural skin texture, realistic anatomy, no logos or text.” Individual panels are displayed with CSS background positioning. These are fictional athletes, not customer testimonials.
+`dist/assets/wall-editorial-v3.png` was generated using the built-in ImageGen tool. Final prompt: "Editorial fitness photography contact sheet, exactly five equal vertical panels side by side, landscape 1536x1024. No borders or text. Diverse South Asian athletes, neutral gym backgrounds, cinematic documentary photography. Woman athlete face with damp hair and sweat in warm light; full-length man in dark hoodie doing landmine press; woman doing bent-over dumbbell row; close-up legs and sneakers jumping onto plyometric box; overhead view of man walking towards training box. Realistic anatomy and equipment. No logos or watermarks." CSS background positions show individual panels without changing the generated image.
 
-`dist/assets/workout-preview.mp4`: Tima Miroshnichenko, Pexels, https://www.pexels.com/video/man-doing-work-out-5319753/ . Locally bundled preview, credited in the page.
+`dist/assets/training-editorial.png` is an earlier ImageGen asset used in the phone's workout preview. Generated athletes are fictional, not customer testimonials. The supplied photo-wall reference informed its grid and activity selection; its original photographs and wording are not copied.
 
-Layout reference: https://10reps.app/ — Krafttraining mit System photo-grid composition. Original reference images, wording and customer data are not used.
+## Prototype boundaries
+
+This is a marketing website concept, not a working fitness app. Phone data, coaching, workout planning, analytics and squad activity are illustrative. Invitation details are not stored or transmitted. Store badges say coming soon and open an explanatory dialog. Legal/support dialogs are pre-launch notices pending approved policies and contact details.
 
 ## Verification
 
-Checked desktop and 390px mobile layouts, modal validation and demo confirmation, workout video playback (readyState 4), photo loading, and the card unlock/reveal. JavaScript syntax checked with Node.
-
-## Section revision
-
-Removed the hero eyebrow and secondary text link, workout category chips, and manual carousel controls. The workout card and video remain. Tightened section spacing and removed dividers around the carousel and personalisation heading. Replaced the consistency dashboard and sample counts with an editorial image and routine/recovery copy. The Everyday Athlete section remains unchanged. Refreshed the reveal card, moved compact FAQs below the final CTA, and added footer navigation plus pre-launch privacy, terms and support dialogs. Footer information is a prototype notice; approved legal policies and support details still need to be provided for launch. Edit dist files directly; the Python scripts record past transformations and should not be rerun against the current version.
+Checked desktop and 390px mobile layouts, sticky positioning and screen transitions, all three phone screen contents fitting above navigation, wall assembly, store notices, invitation validation/confirmation and browser error logs. JavaScript syntax checked with Node.
