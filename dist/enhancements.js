@@ -1,15 +1,7 @@
 // Accessible controls and honest prototype interactions.
 const reducedMotion=matchMedia('(prefers-reduced-motion: reduce)').matches;
 const skip=document.createElement('a');skip.href='#features';skip.className='skip-link';skip.textContent='Skip to features';document.body.prepend(skip);
-document.querySelector('#arc-prev').onclick=()=>go(-1);
-document.querySelector('#arc-next').onclick=()=>go(1);
-let arcPaused=reducedMotion;
 if(reducedMotion)clearInterval(at);
-document.querySelector('#arc-pause').textContent=arcPaused?'Resume rotation':'Pause rotation';
-document.querySelector('#arc-pause').onclick=e=>{arcPaused=!arcPaused;clearInterval(at);if(!arcPaused)at=setInterval(()=>tg++,3800);e.target.textContent=arcPaused?'Resume rotation':'Pause rotation'};
-const dayGrid=document.querySelector('#hmg');
-dayGrid.querySelectorAll('i').forEach(day=>{const b=document.createElement('button');b.className=day.className;b.dataset.t=day.dataset.t;b.setAttribute('aria-label',day.dataset.t);b.title=day.dataset.t;day.replaceWith(b);b.addEventListener('click',()=>{document.querySelector('.vh small').textContent=b.dataset.t});b.addEventListener('focus',()=>{document.querySelector('.vh small').textContent=b.dataset.t})});
-dayGrid.addEventListener('pointermove',e=>{const b=e.target.closest('button');if(!b)return;const area=document.querySelector('#wg').getBoundingClientRect(),r=b.getBoundingClientRect();tip.textContent=b.dataset.t;tip.style.left=(r.left-area.left+r.width/2)+'px';tip.style.top=(r.top-area.top)+'px';tip.classList.add('show')});
 const video=document.querySelector('#workout-video'),play=document.querySelector('#video-play');
 play.onclick=async()=>{if(video.paused){try{await video.play();play.textContent='Ⅱ';play.setAttribute('aria-label','Pause workout preview')}catch{document.querySelector('.video-caption').textContent='Video unavailable. Training image shown.'}}else{video.pause();play.textContent='▶';play.setAttribute('aria-label','Play workout preview')}};
 let returnFocus;
@@ -21,3 +13,9 @@ document.addEventListener('keydown',e=>{if(!document.querySelector('#modal').cla
 document.querySelectorAll('.modal input').forEach(e=>e.setAttribute('aria-label',e.placeholder));
 document.querySelector('.modal select').setAttribute('aria-label','Country calling code');
 document.querySelector('#sub').onclick=()=>{const name=document.querySelector('#f1'),email=document.querySelector('#f2');if(!name.value.trim()){name.focus();return}if(!email.checkValidity()||!email.value){email.reportValidity();email.focus();return}document.querySelector('#fm').style.display='none';document.querySelector('#dn').style.display='block';document.querySelector('#dd').focus()};
+
+const footerInfo={privacy:{title:'Your privacy',copy:'This website is a product prototype. The early-access form does not send or save your details. The full privacy policy, including information about account data and your choices, will be published before live signups open.'},terms:{title:'Terms of use',copy:'You are exploring a pre-launch website concept. The training screens and AI interactions are demonstrations. Product availability, pricing and the full terms will be confirmed before registration opens.'},contact:{title:'Let’s stay connected',copy:'Our support channels will be published when early access opens. For now, explore the FAQs for answers about the 10reps concept and the early-access experience.'}};
+const infoDialog=document.querySelector('#footer-info');
+document.querySelectorAll('[data-info]').forEach(b=>b.addEventListener('click',()=>{const info=footerInfo[b.dataset.info];document.querySelector('#info-title').textContent=info.title;document.querySelector('#info-copy').textContent=info.copy;infoDialog.showModal()}));
+infoDialog.querySelectorAll('button').forEach(b=>b.onclick=()=>infoDialog.close());
+infoDialog.addEventListener('click',e=>{if(e.target===infoDialog){const r=infoDialog.getBoundingClientRect();if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)infoDialog.close()}});

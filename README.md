@@ -35,3 +35,7 @@ Layout reference: https://10reps.app/ — Krafttraining mit System photo-grid co
 ## Verification
 
 Checked desktop and 390px mobile layouts, modal validation and demo confirmation, workout video playback (readyState 4), photo loading, and the card unlock/reveal. JavaScript syntax checked with Node.
+
+## Section revision
+
+Removed the hero eyebrow and secondary text link, workout category chips, and manual carousel controls. The workout card and video remain. Tightened section spacing and removed dividers around the carousel and personalisation heading. Replaced the consistency dashboard and sample counts with an editorial image and routine/recovery copy. The Everyday Athlete section remains unchanged. Refreshed the reveal card, moved compact FAQs below the final CTA, and added footer navigation plus pre-launch privacy, terms and support dialogs. Footer information is a prototype notice; approved legal policies and support details still need to be provided for launch. Edit dist files directly; the Python scripts record past transformations and should not be rerun against the current version.
