@@ -25,26 +25,22 @@ body,button,input,select,textarea,dialog,.product-app{font-family:var(--font-ui)
 /* Shared invitation typography avoids different nav and hero font overrides. */
 body :is(.btn,.footer-invite),header nav a.cta2,.gate #lk,.hero-ch .cta .btn,.final>.btn,.box .btn,#footer-info .btn{font-family:var(--font-ui);font-weight:800;font-size:15px;line-height:1.2;letter-spacing:-.025em}
 @media(max-width:860px){body :is(.btn,.footer-invite),header nav a.cta2,.gate #lk,.hero-ch .cta .btn,.final>.btn,.box .btn,#footer-info .btn{font-size:14px}header nav a.cta2{padding-inline:14px}}
-@media(min-width:1200px){
- .stage{grid-template-columns:minmax(0,1fr) auto;column-gap:22px;padding-right:18px}
- .stage>.phone{grid-column:2;grid-row:1;width:min(290px,calc((100svh - 118px)*.44));min-width:220px}
- .stage>.phone-notes{position:static;inset:auto;grid-column:1;grid-row:1;display:flex;flex-direction:column;gap:48px;width:100%;min-width:0;align-self:center}
- .stage>.device-caption{grid-column:2;grid-row:2}
- .phone-notes .phone-note{position:relative;inset:auto;transform:none;width:100%;max-width:296px;min-height:76px;padding:14px 12px;align-self:end}
- .phone-note-status b{white-space:normal}
-}
-@media(min-width:861px) and (max-width:1199px){
- .stage{grid-template-columns:1fr;grid-template-rows:auto auto;align-content:center;gap:16px;padding:82px 16px 16px}
- .stage>.phone{grid-column:1;grid-row:1;width:min(220px,calc((100svh - 330px)*.474));min-width:140px}
- .stage>.phone-notes{position:static;inset:auto;grid-column:1;grid-row:2;display:flex;flex-direction:column;align-items:center;gap:10px;width:100%}
- .phone-notes .phone-note{position:relative;inset:auto;transform:none;width:100%;max-width:296px;min-height:60px;padding:10px 14px}
- .stage>.device-caption{display:none}.phone-note-status b{white-space:normal}
-}
+/* The phone and cards use measured side lanes: two left, one right. */
+.stage{container-type:inline-size;--device-width:clamp(170px,40cqw,280px);grid-template-columns:1fr;grid-template-rows:auto auto;column-gap:0;padding:80px 0 24px;gap:13px}
+.stage>.phone{grid-column:1;grid-row:1;width:var(--device-width);min-width:0}
+.stage>.device-caption{grid-column:1;grid-row:2}
+.stage>.phone-notes{position:absolute;inset:0;display:block;width:auto;min-width:0}
+.phone-notes .phone-note{position:absolute;inset:auto;width:calc((100% - var(--device-width))/2 - 16px);max-width:230px;min-height:76px;padding:13px 11px;transform:none;border-radius:17px}
+.phone-notes .phone-note:nth-child(1){left:0;top:23%}
+.phone-notes .phone-note:nth-child(2){right:0;top:46%}
+.phone-notes .phone-note:nth-child(3){left:0;top:70%;bottom:auto}
+.phone-note-status{gap:6px}.phone-note-status b{flex:1;min-width:0;white-space:normal;font-size:12px;line-height:1.5}.note-equalizer{width:18px;gap:2px}.note-equalizer i{width:2px}
+@media(min-width:861px) and (max-width:1100px){.phone-notes .phone-note{padding:11px 8px}.phone-note-label{font-size:8px}.phone-note-status b{font-size:10px}.phone-note-status{gap:5px}.note-equalizer{width:14px;gap:1px}}
 @media(max-width:860px){
- .stage{height:610px;grid-template-columns:1fr;grid-template-rows:auto auto;align-content:start;gap:16px;padding:6px 16px 0}
- .stage>.phone{grid-column:1;grid-row:1}
- .stage>.phone-notes{position:static;inset:auto;grid-column:1;grid-row:2;display:flex;flex-direction:column;align-items:center;gap:10px;width:100%}
- .phone-notes .phone-note{position:relative;inset:auto;transform:none;width:100%;max-width:296px;min-height:60px;padding:11px 14px}
- .phone-note-status b{white-space:normal;font-size:12px}.phone-note-label{font-size:9px}
- .story .ch,.story .hero-ch{padding-top:700px;background:linear-gradient(transparent 680px,#050706f5 700px,#050706)}
+ .stage{--device-width:40cqw;height:45svh;grid-template-rows:1fr;align-content:center;place-items:center;padding:6px 0 0;gap:0}
+ .stage>.phone{grid-column:1;grid-row:1;width:var(--device-width)}
+ .phone-notes .phone-note{width:calc((100% - var(--device-width))/2 - 10px);min-height:60px;padding:10px 7px;border-radius:13px}
+ .phone-notes .phone-note:nth-child(1){left:0;top:12%}.phone-notes .phone-note:nth-child(2){right:0;top:43%}.phone-notes .phone-note:nth-child(3){left:0;top:70%}
+ .phone-note-label{font-size:7px;letter-spacing:.08em}.phone-note-status b{font-size:10px;line-height:1.5}.phone-note-status{gap:5px;flex-wrap:wrap}.phone-note-status b{flex-basis:calc(100% - 13px)}.note-equalizer{margin-left:11px;height:11px;width:18px}
+ .story .ch,.story .hero-ch{padding-top:55svh;background:linear-gradient(transparent 35%,#050706ed 55%,#050706)}
 }
